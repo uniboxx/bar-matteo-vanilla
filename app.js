@@ -1,21 +1,23 @@
 const burger = document.querySelector('#burger-menu');
 const menu = document.querySelector('#menu');
 
+function handleClass(className, action, ...els) {
+  els.forEach((el) => el.classList[action](className));
+}
+
 burger.addEventListener('click', () => {
-  [burger, menu].forEach((el) => {
-    el.classList.toggle('active');
-  });
+  handleClass('active', 'toggle', menu, burger);
 });
 
 ['resize', 'scroll'].forEach((event) => {
   window.addEventListener(event, () => {
-    menu.classList.remove('active');
+    handleClass('active', 'remove', menu, burger);
   });
 });
 
 document.addEventListener('click', (e) => {
   target = e.target;
   if (!menu.contains(target) && !burger.contains(target)) {
-    menu.classList.remove('active');
+    handleClass('active', 'remove', menu, burger);
   }
 });

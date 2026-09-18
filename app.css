@@ -48,17 +48,31 @@ body {
 
   #burger-menu {
     display: flex;
+    position: relative;
     flex-direction: column;
     gap: 0.3em;
+    width: 1.5em;
+    height: 1.5em;
     span {
+      display: block;
+      position: absolute;
       transition: 0.3s ease-in-out;
       background: #f5f0e8;
       width: 1.5em;
       height: 0.1em;
+      &:nth-child(1) {
+        top: 25%;
+      }
+      &:nth-child(2) {
+        top: 50%;
+      }
+      &:nth-child(3) {
+        top: 75%;
+      }
     }
     &.active {
       span {
-        transform: translateY(50%);
+        top: 50%;
       }
       span:nth-child(1) {
         transform: rotate(45deg);
